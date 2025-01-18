@@ -19,12 +19,14 @@ public class App {
 
         System.out.println("Введите никнейм пользоватея на Faceit :");
         String username = sc.next();
+        System.out.println("Введите url куда отправятся POST запросы :");
+        String url = sc.next();
 
         List<List<String>> parsedData = parser.parse(username);
 
         for (List<String> singleParsedData : parsedData) {
             String json = parser.getJson(singleParsedData);
-            sendJson("http://localhost:8080/data", json);
+            sendJson(url, json);
         }
     }
 
